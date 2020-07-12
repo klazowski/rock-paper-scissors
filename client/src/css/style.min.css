@@ -28,7 +28,15 @@ html { /* Variables */ /* 15 -> 20 */ --fs-score-title: 10px; --fs-score: 38px; 
 
 .app { width: var(--media-mobile); min-height: 800px; display: flex; flex-direction: column; align-items: center; }
 
-.game { width: 80%; height: 470px; margin-top: 1em; background-color: var(--c-dark-text); }
+.game { width: 80%; height: 470px; margin-top: 1em; display: flex; justify-content: center; align-items: center; background-color: #fff; }
+
+.new-game { position: relative; display: flex; justify-content: center; align-items: center; }
+
+.new-game > .paper { position: absolute; top: -10%; left: -10%; }
+
+.new-game > .scissors { position: absolute; top: -10%; right: -10%; }
+
+.new-game > .rock { position: absolute; bottom: 0; }
 
 .footer { width: 80%; height: 3em; display: flex; align-items: center; justify-content: center; background-color: var(--c-dark-text); margin-top: 1em; }
 
