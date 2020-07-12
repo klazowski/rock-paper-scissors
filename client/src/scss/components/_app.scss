@@ -1,0 +1,10 @@
+@charset 'utf-8';
+
+.app {
+  width: var(--media-mobile);
+  min-height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,27 @@
+@charset 'utf-8';
+
+/* Colors */
+
+* {
+  /* Primary */
+
+  --c-scissors-gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
+  --c-paper-gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
+  --c-rock-gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
+  --c-lizard-gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
+  --c-cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+
+  /* Additional */
+  --c-white: hsl(0, 0%, 97%);
+  --c-greyish: hsl(245, 12%, 37%);
+
+  /* Neutral */
+
+  --c-dark-text: hsl(229, 25%, 31%);
+  --c-score-text: hsl(229, 64%, 46%);
+  --c-header-outline: hsl(217, 16%, 45%);
+
+  /* Background */
+
+  --c-radial-gradient: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
