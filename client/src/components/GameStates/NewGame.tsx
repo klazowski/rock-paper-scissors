@@ -1,7 +1,12 @@
 import React from 'react';
+import Triangle from '../images/Triangle';
 
-const newGame = (): JSX.Element => {
-  return <div></div>;
+const NewGame = (): JSX.Element => {
+  return (
+    <div>
+      <Triangle />
+    </div>
+  );
 };
 
-export default newGame;
+export default NewGame;
