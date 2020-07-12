@@ -19,7 +19,6 @@
   font-weight: var(--fw-regular);
   font-size: var(--fs-basic);
   line-height: 0.85;
-  color: var(--c-white);
 }
 
 .header__score {
@@ -40,11 +39,11 @@
     letter-spacing: 1.25px;
   }
   &__title {
-    font-size: 10px;
+    font-size: var(--fs-score-title);
     color: var(--c-score-text);
   }
   &__value {
-    font-size: 38px;
+    font-size: var(--fs-score);
     color: var(--c-greyish);
   }
 }

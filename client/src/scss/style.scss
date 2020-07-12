@@ -1,5 +1,6 @@
 @charset 'utf-8';
 
+@import 'global/layout';
 @import 'global/resets';
 @import 'global/colours';
 @import 'global/typography';
@@ -8,3 +9,5 @@
 
 @import 'components/header';
 @import 'components/app';
+@import 'components/game';
+@import 'components/footer';
