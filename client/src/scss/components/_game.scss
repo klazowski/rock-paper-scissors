@@ -16,19 +16,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  & > .paper {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-  }
-  & > .scissors {
-    position: absolute;
-    top: -10%;
-    right: -10%;
-  }
-  & > .rock {
-    position: absolute;
-    bottom: 0;
-  }
 }
