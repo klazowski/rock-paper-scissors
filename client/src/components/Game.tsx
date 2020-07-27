@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import NewGame from './GameStates/NewGame';
 
-type GameState = 'new' | 'youPicked' | 'bothPicked' | 'userWin' | 'houseWin';
-type GameChoice = 'rock' | 'paper' | 'scissors' | undefined;
+const GameTokensSimple: TokenSymbol[] = ['rock', 'paper', 'scissors'];
+const GameTokensExtended: TokenSymbol[] = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 
 const Game = (): JSX.Element => {
   const [gameState, setGameState] = useState<GameState>('new');
-  const [userChoice, setUserChoice] = useState<GameChoice>(undefined);
-  const [houseChoice, setHouseChoice] = useState<GameChoice>(undefined);
+  const [tokens, setTokens] = useState<TokenSymbol[]>(GameTokensSimple);
+  const [userChoice, setUserChoice] = useState<TokenSymbol | undefined>(undefined);
+  const [houseChoice, setHouseChoice] = useState<TokenSymbol | undefined>(undefined);
+
+  const tokenClickHandler = (event: React.MouseEvent, tokenSymbol: TokenSymbol) => {
+    console.log(`Selected ${tokenSymbol}`);
+    // Set next game state
+  };
 
   const gameBoard = () => {
     switch (gameState) {
       case 'new':
-        return <NewGame />;
+        return <NewGame gameType={'simple'} onChoice={tokenClickHandler} />;
       default:
         return <p>Error</p>;
     }

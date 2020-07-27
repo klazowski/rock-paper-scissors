@@ -1,11 +1,11 @@
 import React from 'react';
 import GameToken from '../GameComponents/GameToken';
+import Triangle from '../GameComponents/Triangle';
 
-const NewGame = (): JSX.Element => {
-  const tokenClickHandler = (event: React.MouseEvent, tokenSymbol: TokenSymbol) => {
-    console.log(`Selected ${tokenSymbol}`);
-    // Set next game state
-  };
+const NewGame = (props: {
+  gameType: GameType;
+  onChoice: (event: React.MouseEvent, selectedToken: TokenSymbol) => void;
+}): JSX.Element => {
   const scissorsGradient: Gradient = {
     gradientStart: `hsl(40, 84%, 53%)`,
     gradientEnd: `hsl(39, 89%, 49%)`,
@@ -28,25 +28,26 @@ const NewGame = (): JSX.Element => {
   };
   return (
     <div className="new-game">
-      <img className="triangle" src="./images/bg-triangle.svg" alt="" width={200}></img>
-      <GameToken
-        onClick={tokenClickHandler}
-        tokenSymbol="paper"
-        tokenFrameColour={paperGradient}
-        position={{ top: '-30%', left: '-30%' }}
-      />
-      <GameToken
-        onClick={tokenClickHandler}
-        tokenSymbol="scissors"
-        tokenFrameColour={scissorsGradient}
-        position={{ top: '-30%', left: '50%' }}
-      />
-      <GameToken
-        onClick={tokenClickHandler}
-        tokenSymbol="rock"
-        tokenFrameColour={rockGradient}
-        position={{ top: '40%', left: '10%' }}
-      />
+      <Triangle>
+        <button
+          className={'paper'}
+          onClick={(event: React.MouseEvent) => props.onChoice(event, 'paper')}
+        >
+          <GameToken tokenSymbol="paper" tokenFrameColour={paperGradient} />
+        </button>
+        <button
+          className={'rock'}
+          onClick={(event: React.MouseEvent) => props.onChoice(event, 'rock')}
+        >
+          <GameToken tokenSymbol="rock" tokenFrameColour={rockGradient} />
+        </button>
+        <button
+          className={'scissors'}
+          onClick={(event: React.MouseEvent) => props.onChoice(event, 'scissors')}
+        >
+          <GameToken tokenSymbol="scissors" tokenFrameColour={scissorsGradient} />
+        </button>
+      </Triangle>
     </div>
   );
 };

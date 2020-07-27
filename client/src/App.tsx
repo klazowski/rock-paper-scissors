@@ -4,13 +4,12 @@ import Header from './components/Header';
 import Game from './components/Game';
 import Footer from './components/Footer';
 
-const gameTypes: GameTypes = {
-  rps: { type: 'rps', title: 'Rock Paper Scissors' },
-  rpsls: { type: 'rpsls', title: 'Rock Paper Scissors Lizard Spock' },
-};
-
 function App() {
-  const [gameType, setGameType] = useState<GameType>(gameTypes.rps);
+  const gameTypes: GameTypes = {
+    simple: { type: 'simple', title: 'Rock Paper Scissors' },
+    extended: { type: 'extended', title: 'Rock Paper Scissors Lizard Spock' },
+  };
+  const [gameType, setGameType] = useState<GameDetails>(gameTypes.simple);
   const [score, setScore] = useState<number>(12);
 
   return (

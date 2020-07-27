@@ -1,6 +1,8 @@
-type GameType = {
-  type: string;
+type GameType = 'simple' | 'extended';
+type GameDetails = {
+  type: GameType;
   title: string;
 };
-
-type GameTypes = { [type: string]: GameType };
+type GameTypes = {
+  [id in GameType]: GameDetails;
+};
