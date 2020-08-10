@@ -1,10 +1,17 @@
 import React from 'react';
 
-const Footer = (): JSX.Element => {
+const Footer = (props: { changeGameClick: (event: React.MouseEvent) => void }): JSX.Element => {
   return (
     <div className="footer">
-      <button className="btn_rules" aria-label="Rules">
+      <button className="btn btn_rules" aria-label="Rules">
         Rules
+      </button>
+      <button
+        className="btn btn_gameType"
+        aria-label="Change game type"
+        onClick={props.changeGameClick}
+      >
+        Change game type
       </button>
     </div>
   );
