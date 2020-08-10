@@ -4,7 +4,8 @@
   "description": "My solution for Frontend Mentor challenge.",
   "main": "client/index.js",
   "scripts": {
-    "start": ""
+    "start": "",
+    "start-client": "npm run start --prefix client"
   },
   "repository": {
     "type": "git",
