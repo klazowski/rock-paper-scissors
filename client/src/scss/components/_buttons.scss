@@ -9,3 +9,21 @@
 
   border-radius: 5px;
 }
+
+.btn {
+  padding: 0.5em 1.5em;
+
+  text-transform: uppercase;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
+  letter-spacing: 1.5px;
+
+  border-color: var(--c-white);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+}
+
+.btn_gameType {
+  margin-left: 2em;
+}
