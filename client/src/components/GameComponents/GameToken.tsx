@@ -2,9 +2,9 @@ import React from 'react';
 
 const GameToken = (props: { tokenSymbol: TokenSymbol }): JSX.Element => {
   const areaSize = 150;
-  const ringOuterDiameter: number = 130;
+  //const ringOuterDiameter: number = 130;
   const ringInnerDiameter: number = 100;
-  const shadowOut: number = 5;
+  //const shadowOut: number = 5;
 
   const gradients: { [type in string]: Gradient } = {
     scissorsGradient: {
