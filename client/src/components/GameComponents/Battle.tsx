@@ -6,12 +6,15 @@ const Battle = (props: {
   userChoice: TokenSymbol;
   houseChoice: TokenSymbol;
   onPlayAgainClick: (event: React.MouseEvent) => void;
+  updateScore: (modifier: number) => void;
 }): JSX.Element => {
   const battleResult = (): JSX.Element => {
     switch (calculateBattleResult(props.userChoice, props.houseChoice)) {
       case 'won':
+        props.updateScore(1);
         return <p>You won</p>;
       case 'lost':
+        props.updateScore(-1);
         return <p>You lost</p>;
       case 'tie':
         return <p>It's a tie</p>;

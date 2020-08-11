@@ -9,14 +9,24 @@ function App() {
     simple: { type: 'simple', title: 'Rock Paper Scissors' },
     extended: { type: 'extended', title: 'Rock Paper Scissors Lizard Spock' },
   };
-  const [gameType, setGameType] = useState<GameDetails>(gameTypes.simple);
-  const [score, setScore] = useState<number>(12);
+  const [gameDetails, setGameDetails] = useState<GameDetails>(gameTypes.simple);
+  const [score, setScore] = useState<number>(0);
+
+  const handleChangeGameClick = (event: React.MouseEvent): void => {
+    const newGameDetails: GameDetails =
+      gameDetails.type === 'simple' ? gameTypes.extended : gameTypes.simple;
+    setGameDetails(newGameDetails);
+  };
+
+  const handleScoreUpdate = (modifier: number): void => {
+    setScore((score) => score + modifier);
+  };
 
   return (
     <div className="app">
-      <Header title={gameType.title} score={score} />
-      <Game />
-      <Footer />
+      <Header title={gameDetails.title} score={score} />
+      <Game updateScore={handleScoreUpdate} />
+      <Footer changeGameClick={handleChangeGameClick} />
     </div>
   );
 }
