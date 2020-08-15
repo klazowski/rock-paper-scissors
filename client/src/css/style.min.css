@@ -50,11 +50,27 @@ html { /* Variables */ /* 15 -> 20 */ --fs-score-title: 10px; --fs-score: 38px; 
 
 .triangle-node { position: absolute; }
 
-.triangle-node__1 { top: 15%; left: -2%; }
+.triangle-node__1 { bottom: 19%; left: 25%; }
 
-.triangle-node__2 { top: 15%; right: -2%; }
+.triangle-node__2 { top: 15%; left: -2%; }
 
-.triangle-node__3 { bottom: 19%; left: 25%; }
+.triangle-node__3 { top: 15%; right: -2%; }
+
+.pentagon-countainer { position: relative; content: ''; width: 100%; height: 100%; }
+
+.pentagon { position: absolute; width: 200px; top: 30%; left: 17%; }
+
+.pentagon-node { position: absolute; }
+
+.pentagon-node__1 { bottom: 10%; right: 0%; }
+
+.pentagon-node__2 { top: 30%; right: -15%; }
+
+.pentagon-node__3 { top: 10%; right: 25%; }
+
+.pentagon-node__4 { top: 30%; left: -15%; }
+
+.pentagon-node__5 { bottom: 10%; left: 0%; }
 
 .footer { width: 80%; height: 3em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-top: 1em; }
 

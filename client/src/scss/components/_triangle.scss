@@ -15,15 +15,15 @@
 .triangle-node {
   position: absolute;
   &__1 {
-    top: 15%;
-    left: -2%;
+    bottom: 19%;
+    left: 25%;
   }
   &__2 {
     top: 15%;
-    right: -2%;
+    left: -2%;
   }
   &__3 {
-    bottom: 19%;
-    left: 25%;
+    top: 15%;
+    right: -2%;
   }
 }

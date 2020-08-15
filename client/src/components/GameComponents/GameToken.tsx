@@ -20,7 +20,7 @@ const GameToken = (props: { tokenSymbol: TokenSymbol }): JSX.Element => {
       gradientEnd: `hsl(349, 71%, 52%)`,
     },
     lizardGradient: {
-      gradientStart: `hsl(261, 72%, 63%))`,
+      gradientStart: `hsl(261, 72%, 63%)`,
       gradientEnd: `hsl(261, 73%, 60%)`,
     },
     spockGradient: {
@@ -34,19 +34,19 @@ const GameToken = (props: { tokenSymbol: TokenSymbol }): JSX.Element => {
       width={areaSize}
       height={areaSize}
       viewBox={`0 0 ${areaSize} ${areaSize}`}
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns='http://www.w3.org/2000/svg'
     >
       <defs>
-        <linearGradient id={`tokenGrad_${props.tokenSymbol}`} x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id={`tokenGrad_${props.tokenSymbol}`} x1='0%' y1='0%' x2='0%' y2='100%'>
           <stop
-            offset="0%"
+            offset='0%'
             style={{
               stopColor: gradients[`${props.tokenSymbol}Gradient`].gradientStart,
               stopOpacity: 1,
             }}
           />
           <stop
-            offset="100%"
+            offset='100%'
             style={{
               stopColor: gradients[`${props.tokenSymbol}Gradient`].gradientEnd,
               stopOpacity: 1,
@@ -59,8 +59,8 @@ const GameToken = (props: { tokenSymbol: TokenSymbol }): JSX.Element => {
         cy={areaSize / 2}
         r={ringInnerDiameter / 2}
         stroke={`url(#tokenGrad_${props.tokenSymbol})`}
-        strokeWidth="15"
-        fill="white"
+        strokeWidth='15'
+        fill='white'
       />
 
       <image
