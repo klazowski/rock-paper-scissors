@@ -33,22 +33,14 @@ function App() {
     setGameDetails(newGameDetails);
   };
 
-  const handleScoreUpdate = (modifier: number): void => {
-    setScore((score) => score + modifier);
-  };
-
-  const handleRulesClick = (): void => {
-    setShowRulesModal(true);
-  };
-
-  const handleCloseModalclick = () => {
-    setShowRulesModal(false);
-  };
+  const handleScoreUpdate = (modifier: number): void => setScore((score) => score + modifier);
+  const handleRulesClick = (): void => setShowRulesModal(true);
+  const handleCloseModalclick = () => setShowRulesModal(false);
 
   return (
     <div className='app'>
       <Header title={gameDetails.title} score={score} />
-      <Game updateScore={handleScoreUpdate} gameType='simple' />
+      <Game updateScore={handleScoreUpdate} gameType={gameDetails.type} />
       <Footer changeGameClick={handleChangeGameClick} rulesClick={handleRulesClick} />
       {showRulesModal ? (
         <Modal>

@@ -17,12 +17,12 @@ const Game = (props: {
   const [battleResult, setBattleResult] = useState<BattleResult>(undefined);
 
   useEffect(() => {
-    setHouseChoice(housePick(props.gameType));
+    if (userChoice) setHouseChoice(housePick(props.gameType));
   }, [userChoice]);
 
   useEffect(() => {
     if (userChoice && houseChoice) setBattleResult(calculateBattleResult(userChoice, houseChoice));
-  }, [houseChoice]);
+  }, [userChoice, houseChoice]);
 
   useEffect(() => {
     if (gameState === 'battle') {
@@ -40,13 +40,13 @@ const Game = (props: {
     }
   }, [battleResult]);
 
-  const tokenClickHandler = (event: React.MouseEvent, tokenSymbol: TokenSymbol) => {
+  const handleTokenClick = (event: React.MouseEvent, tokenSymbol: TokenSymbol) => {
     setUserChoice(tokenSymbol);
     // Set next game state
     setGameState('battle');
   };
 
-  const playAgainClickHandler = (event: React.MouseEvent) => {
+  const handlePlayAgainClick = (event: React.MouseEvent) => {
     setUserChoice(undefined);
     setHouseChoice(undefined);
     setBattleResult(undefined);
@@ -57,7 +57,7 @@ const Game = (props: {
   const gameBoard = (): JSX.Element => {
     switch (gameState) {
       case 'new':
-        return <NewGame gameType={props.gameType} onChoice={tokenClickHandler} />;
+        return <NewGame gameType={props.gameType} onChoice={handleTokenClick} />;
       case 'battle':
       case 'result':
         if (!userChoice || !houseChoice) return <p>Choice not accepted?</p>;
@@ -65,7 +65,7 @@ const Game = (props: {
           <Battle
             userChoice={userChoice}
             houseChoice={houseChoice}
-            onPlayAgainClick={playAgainClickHandler}
+            onPlayAgainClick={handlePlayAgainClick}
             battleResult={battleResult}
           />
         );
