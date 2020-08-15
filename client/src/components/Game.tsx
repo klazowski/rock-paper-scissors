@@ -2,19 +2,27 @@ import React, { useState, useEffect } from 'react';
 import NewGame from './GameComponents/GameStates/NewGame';
 import Battle from './GameComponents/Battle';
 import { calculateBattleResult } from '../engine/battle';
+import { housePick } from '../engine/house';
 
 //const GameTokensSimple: TokenSymbol[] = ['rock', 'paper', 'scissors'];
 //const GameTokensExtended: TokenSymbol[] = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 
-const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element => {
+const Game = (props: {
+  updateScore: (modifier: number) => void;
+  gameType: GameType;
+}): JSX.Element => {
   const [gameState, setGameState] = useState<GameState>('new');
   const [userChoice, setUserChoice] = useState<TokenSymbol | undefined>(undefined);
   const [houseChoice, setHouseChoice] = useState<TokenSymbol | undefined>(undefined);
   const [battleResult, setBattleResult] = useState<BattleResult>(undefined);
 
   useEffect(() => {
+    setHouseChoice(housePick(props.gameType));
+  }, [userChoice]);
+
+  useEffect(() => {
     if (userChoice && houseChoice) setBattleResult(calculateBattleResult(userChoice, houseChoice));
-  }, [userChoice, houseChoice]);
+  }, [houseChoice]);
 
   useEffect(() => {
     if (gameState === 'battle') {
@@ -34,7 +42,6 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
 
   const tokenClickHandler = (event: React.MouseEvent, tokenSymbol: TokenSymbol) => {
     setUserChoice(tokenSymbol);
-    setHouseChoice('paper');
     // Set next game state
     setGameState('battle');
   };
@@ -47,10 +54,10 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
     setGameState('new');
   };
 
-  const gameBoard = () => {
+  const gameBoard = (): JSX.Element => {
     switch (gameState) {
       case 'new':
-        return <NewGame gameType={'simple'} onChoice={tokenClickHandler} />;
+        return <NewGame gameType={props.gameType} onChoice={tokenClickHandler} />;
       case 'battle':
       case 'result':
         if (!userChoice || !houseChoice) return <p>Choice not accepted?</p>;
@@ -63,7 +70,7 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
           />
         );
       default:
-        return <p>Error</p>;
+        return <p>Game board render error</p>;
     }
   };
 

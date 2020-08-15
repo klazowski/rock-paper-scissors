@@ -48,7 +48,7 @@ function App() {
   return (
     <div className='app'>
       <Header title={gameDetails.title} score={score} />
-      <Game updateScore={handleScoreUpdate} />
+      <Game updateScore={handleScoreUpdate} gameType='simple' />
       <Footer changeGameClick={handleChangeGameClick} rulesClick={handleRulesClick} />
       {showRulesModal ? (
         <Modal>
