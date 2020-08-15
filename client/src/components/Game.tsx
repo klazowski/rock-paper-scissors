@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NewGame from './GameStates/NewGame';
+import NewGame from './GameComponents/GameStates/NewGame';
 import Battle from './GameComponents/Battle';
 import { calculateBattleResult } from '../engine/battle';
 
