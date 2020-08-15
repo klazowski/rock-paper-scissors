@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewGame from './GameStates/NewGame';
 import Battle from './GameComponents/Battle';
+import { calculateBattleResult } from '../engine/battle';
 
 //const GameTokensSimple: TokenSymbol[] = ['rock', 'paper', 'scissors'];
 //const GameTokensExtended: TokenSymbol[] = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
@@ -9,6 +10,27 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
   const [gameState, setGameState] = useState<GameState>('new');
   const [userChoice, setUserChoice] = useState<TokenSymbol | undefined>(undefined);
   const [houseChoice, setHouseChoice] = useState<TokenSymbol | undefined>(undefined);
+  const [battleResult, setBattleResult] = useState<BattleResult>(undefined);
+
+  useEffect(() => {
+    if (userChoice && houseChoice) setBattleResult(calculateBattleResult(userChoice, houseChoice));
+  }, [userChoice, houseChoice]);
+
+  useEffect(() => {
+    if (gameState === 'battle') {
+      setGameState('result');
+      switch (battleResult) {
+        case 'won':
+          props.updateScore(1);
+          break;
+        case 'lost':
+          props.updateScore(-1);
+          break;
+        default:
+          break;
+      }
+    }
+  }, [battleResult]);
 
   const tokenClickHandler = (event: React.MouseEvent, tokenSymbol: TokenSymbol) => {
     setUserChoice(tokenSymbol);
@@ -20,13 +42,9 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
   const playAgainClickHandler = (event: React.MouseEvent) => {
     setUserChoice(undefined);
     setHouseChoice(undefined);
+    setBattleResult(undefined);
     // Set next game state
     setGameState('new');
-  };
-
-  const handleScoreUpdate = (modifier: number): void => {
-    setGameState('result');
-    props.updateScore(modifier);
   };
 
   const gameBoard = () => {
@@ -34,13 +52,14 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
       case 'new':
         return <NewGame gameType={'simple'} onChoice={tokenClickHandler} />;
       case 'battle':
+      case 'result':
         if (!userChoice || !houseChoice) return <p>Choice not accepted?</p>;
         return (
           <Battle
             userChoice={userChoice}
             houseChoice={houseChoice}
             onPlayAgainClick={playAgainClickHandler}
-            updateScore={handleScoreUpdate}
+            battleResult={battleResult}
           />
         );
       default:
@@ -48,7 +67,7 @@ const Game = (props: { updateScore: (modifier: number) => void }): JSX.Element =
     }
   };
 
-  return <div className="game">{gameBoard()}</div>;
+  return <div className='game'>{gameBoard()}</div>;
 };
 
 export default Game;
