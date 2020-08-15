@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Game from './components/Game';
 import Footer from './components/Footer';
 import { getFromLocalStorage, saveToLocalStorage } from './engine/local_storage';
+import Modal from './components/Modal';
+import Rules from './components/GameComponents/Rules';
 
 const SCORE_LOCAL_STORAGE = 'score';
 
@@ -19,6 +21,7 @@ function App() {
     if (initialState === '') return 0;
     return Number.parseInt(initialState);
   });
+  const [showRulesModal, setShowRulesModal] = useState<boolean>(false);
 
   useEffect(() => {
     saveToLocalStorage(SCORE_LOCAL_STORAGE, score.toString());
@@ -34,11 +37,24 @@ function App() {
     setScore((score) => score + modifier);
   };
 
+  const handleRulesClick = (): void => {
+    setShowRulesModal(true);
+  };
+
+  const handleCloseModalclick = () => {
+    setShowRulesModal(false);
+  };
+
   return (
     <div className='app'>
       <Header title={gameDetails.title} score={score} />
       <Game updateScore={handleScoreUpdate} />
-      <Footer changeGameClick={handleChangeGameClick} />
+      <Footer changeGameClick={handleChangeGameClick} rulesClick={handleRulesClick} />
+      {showRulesModal ? (
+        <Modal>
+          <Rules gameType={gameDetails.type} onCloseClick={handleCloseModalclick} />
+        </Modal>
+      ) : null}
     </div>
   );
 }
