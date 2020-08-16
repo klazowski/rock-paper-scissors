@@ -10,17 +10,17 @@ const Battle = (props: {
 }): JSX.Element => {
   return (
     <div>
-      <div className='flex--center flex--row'>
-        <div>
-          <GameToken tokenSymbol={props.userChoice} />
+      <div className='battle-tokens flex--row flex--center'>
+        <div className='battle-token'>
+          <GameToken tokenSymbol={props.userChoice} hasShadow={props.battleResult === 'won'} />
           <p>You picked</p>
         </div>
-        <div>
-          <GameToken tokenSymbol={props.houseChoice} />
+        <div className='battle-token'>
+          <GameToken tokenSymbol={props.houseChoice} hasShadow={props.battleResult === 'lost'} />
           <p>The house picked</p>
         </div>
       </div>
-      <div className='flex--center flex--column'>
+      <div className='battle-results flex--column flex--center'>
         <BattleResult result={props.battleResult} />
         <button className='btn--cta' onClick={props.onPlayAgainClick}>
           Play again
