@@ -5,13 +5,13 @@ const BattleResult = (props: { result: BattleResult }): JSX.Element => {
     case undefined:
       return <></>;
     case 'won':
-      return <p>You won</p>;
+      return <p className='battle-result'>You win</p>;
     case 'lost':
-      return <p>You lost</p>;
+      return <p className='battle-result'>You lose</p>;
     case 'tie':
-      return <p>It's a tie</p>;
+      return <p className='battle-result'>It's a tie</p>;
     default:
-      return <p>Something went wrong</p>;
+      return <p className='battle-result battle-result--error'>Something went wrong</p>;
   }
 };
 
