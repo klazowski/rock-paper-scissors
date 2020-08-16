@@ -15,3 +15,43 @@
   width: 100%;
   height: 100%;
 }
+
+.battle-tokens {
+  margin-top: 3em;
+}
+
+.battle-token:not(:first-child) {
+  margin-left: 2em;
+}
+.battle-token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.battle-token > p {
+  text-transform: uppercase;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+}
+
+.battle-results {
+  margin-top: 4em;
+}
+
+.battle-result {
+  text-transform: uppercase;
+  font-size: var(--fs-xlarge);
+  font-weight: var(--fw-bold);
+}
+.battle-result--error {
+  color: var(--c-rock-gradient);
+}
+
+.token-shadow {
+  z-index: -9999;
+  box-shadow: 0 0 0px 48px rgba(white, 0.15), 0 0 0px 92px rgba(white, 0.1),
+    0 0 0px 160px rgba(white, 0.05);
+}
