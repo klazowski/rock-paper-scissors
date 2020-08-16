@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameToken = (props: { tokenSymbol: TokenSymbol }): JSX.Element => {
+const GameToken = (props: { tokenSymbol: TokenSymbol; hasShadow?: boolean }): JSX.Element => {
   const areaSize = 150;
   //const ringOuterDiameter: number = 130;
   const ringInnerDiameter: number = 100;
