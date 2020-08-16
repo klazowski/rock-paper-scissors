@@ -3,3 +3,7 @@
 .app {
   background-image: var(--c-radial-gradient);
 }
+
+* {
+  --border: var(--c-header-outline) solid 3px;
+}
