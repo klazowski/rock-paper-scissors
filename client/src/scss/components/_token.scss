@@ -1,0 +1,94 @@
+@charset 'utf-8';
+
+* {
+  --token-diameter: 130px;
+}
+
+.token-ring {
+  position: relative;
+  user-select: none;
+
+  //const areaSize = 150;
+  //const ringOuterDiameter: number = 130;
+  //const ringInnerDiameter: number = 100;
+  //const shadowOut: number = 5;
+
+  width: var(--token-diameter);
+  height: calc(1.03 * var(--token-diameter));
+  margin: auto;
+
+  text-align: center;
+
+  border-radius: 50%;
+}
+
+.token-ring--winner {
+  box-shadow: 0 0 0 80px rgba(255, 255, 255, 0.04), 0 0 0 50px rgba(255, 255, 255, 0.03),
+    0 0 0 25px rgba(255, 255, 255, 0.01);
+}
+
+.token-ring--scissors {
+  background-color: var(--c-scissors);
+}
+.token-ring--scissors > .token-ring__surface {
+  background-image: var(--c-scissors-gradient);
+}
+
+.token-ring--paper {
+  background-color: var(--c-paper);
+}
+.token-ring--paper > .token-ring__surface {
+  background-image: var(--c-paper-gradient);
+}
+
+.token-ring--rock {
+  background-color: var(--c-rock);
+}
+.token-ring--rock > .token-ring__surface {
+  background-image: var(--c-rock-gradient);
+}
+
+.token-ring--lizard {
+  background-color: var(--c-lizard);
+}
+.token-ring--lizard > .token-ring__surface {
+  background-image: var(--c-lizard-gradient);
+}
+
+.token-ring--spock {
+  background-color: var(--c-spock);
+}
+.token-ring--spock > .token-ring__surface {
+  background-image: var(--c-spock-gradient);
+}
+
+.token-ring__surface {
+  content: '';
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 95%;
+  border-radius: 50%;
+}
+
+.token-ring__inner-wall {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: calc(0.7 * var(--token-diameter));
+  height: calc(0.7 * var(--token-diameter));
+  background-color: rgb(186, 191, 212);
+}
+
+.token-ring__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(0.7 * var(--token-diameter));
+  height: calc(0.95 * 0.7 * var(--token-diameter));
+  border-radius: 50%;
+  background-image: linear-gradient(0deg, rgb(243, 243, 243), rgb(218, 218, 218));
+}
