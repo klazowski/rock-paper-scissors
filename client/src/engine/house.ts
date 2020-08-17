@@ -3,9 +3,9 @@ const randomIntegerFromRange = (min: number, max: number): number => {
   return result;
 };
 
-const housePick = (gameType: GameType): TokenSymbol => {
+const housePick = (gameDetails: GameDetails): TokenSymbol => {
   let max = 300; // 3 choices
-  if (gameType === 'extended') max = 500; // 5 choices
+  if (gameDetails.type === 'extended') max = 500; // 5 choices
 
   const choice: number = randomIntegerFromRange(0, max);
 
