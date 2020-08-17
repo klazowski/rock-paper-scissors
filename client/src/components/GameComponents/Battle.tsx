@@ -12,11 +12,11 @@ const Battle = (props: {
     <div>
       <div className='battle-tokens flex--row flex--center'>
         <div className='battle-token'>
-          <GameToken tokenSymbol={props.userChoice} hasShadow={props.battleResult === 'won'} />
+          <GameToken tokenSymbol={props.userChoice} isWinner={props.battleResult === 'won'} />
           <p>You picked</p>
         </div>
         <div className='battle-token'>
-          <GameToken tokenSymbol={props.houseChoice} hasShadow={props.battleResult === 'lost'} />
+          <GameToken tokenSymbol={props.houseChoice} isWinner={props.battleResult === 'lost'} />
           <p>The house picked</p>
         </div>
       </div>
