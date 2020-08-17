@@ -4,12 +4,9 @@ import Battle from './GameComponents/Battle';
 import { calculateBattleResult } from '../engine/battle';
 import { housePick } from '../engine/house';
 
-//const GameTokensSimple: TokenSymbol[] = ['rock', 'paper', 'scissors'];
-//const GameTokensExtended: TokenSymbol[] = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-
 const Game = (props: {
   updateScore: (modifier: number) => void;
-  gameType: GameType;
+  gameDetails: GameDetails;
 }): JSX.Element => {
   const [gameState, setGameState] = useState<GameState>('new');
   const [userChoice, setUserChoice] = useState<TokenSymbol | undefined>(undefined);
@@ -17,7 +14,7 @@ const Game = (props: {
   const [battleResult, setBattleResult] = useState<BattleResult>(undefined);
 
   useEffect(() => {
-    if (userChoice) setHouseChoice(housePick(props.gameType));
+    if (userChoice) setHouseChoice(housePick(props.gameDetails));
   }, [userChoice]);
 
   useEffect(() => {
@@ -57,7 +54,7 @@ const Game = (props: {
   const gameBoard = (): JSX.Element => {
     switch (gameState) {
       case 'new':
-        return <NewGame gameType={props.gameType} onChoice={handleTokenClick} />;
+        return <NewGame gameDetails={props.gameDetails} onChoice={handleTokenClick} />;
       case 'battle':
       case 'result':
         if (!userChoice || !houseChoice) return <p>Choice not accepted?</p>;

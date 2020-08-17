@@ -4,47 +4,25 @@ import Triangle from '../Triangle';
 import Pentagon from '../Pentagon';
 
 const NewGame = (props: {
-  gameType: GameType;
+  gameDetails: GameDetails;
   onChoice: (event: React.MouseEvent, selectedToken: TokenSymbol) => void;
 }): JSX.Element => {
-  const gameTokensSimple: JSX.Element[] = [
-    <button className={'rock'} onClick={(event: React.MouseEvent) => props.onChoice(event, 'rock')}>
-      <GameToken tokenSymbol='rock' />
-    </button>,
-    <button
-      className={'paper'}
-      onClick={(event: React.MouseEvent) => props.onChoice(event, 'paper')}
-    >
-      <GameToken tokenSymbol='paper' />
-    </button>,
-    <button
-      className={'scissors'}
-      onClick={(event: React.MouseEvent) => props.onChoice(event, 'scissors')}
-    >
-      <GameToken tokenSymbol='scissors' />
-    </button>,
-  ];
-  const gameTokensExtended: JSX.Element[] = [
-    ...gameTokensSimple,
-    <button
-      className={'spock'}
-      onClick={(event: React.MouseEvent) => props.onChoice(event, 'spock')}
-    >
-      <GameToken tokenSymbol='spock' />
-    </button>,
-    <button
-      className={'lizard'}
-      onClick={(event: React.MouseEvent) => props.onChoice(event, 'lizard')}
-    >
-      <GameToken tokenSymbol='lizard' />
-    </button>,
-  ];
+  const gameTokens: JSX.Element[] = props.gameDetails.tokens.map((tokenSymbol: TokenSymbol) => {
+    return (
+      <button
+        className={`${tokenSymbol} btn--token`}
+        onClick={(event: React.MouseEvent) => props.onChoice(event, tokenSymbol)}
+      >
+        <GameToken tokenSymbol={tokenSymbol} />
+      </button>
+    );
+  });
 
   const gameBoard: JSX.Element =
-    props.gameType === 'extended' ? (
-      <Pentagon>{gameTokensExtended}</Pentagon>
+    props.gameDetails.type === 'extended' ? (
+      <Pentagon>{gameTokens}</Pentagon>
     ) : (
-      <Triangle>{gameTokensSimple}</Triangle>
+      <Triangle>{gameTokens}</Triangle>
     );
 
   return <div className='new-game'>{gameBoard}</div>;
