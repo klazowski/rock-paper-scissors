@@ -96,7 +96,13 @@ html { /* Variables */ /* 15 -> 20 */ --fs-score-title: 10px; --fs-score: 38px; 
 
 .pentagon-node__5 { bottom: 10%; left: 0%; }
 
-.footer { width: 80%; height: 3em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-top: 1em; }
+.footer { width: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-top: 1em; }
+
+.footer__buttons { width: 80%; height: 3em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+
+.footer__author { width: 100%; padding: 0.25em 1em; margin-top: 2em; height: 2em; line-height: 1em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; font-size: var(--fs-score-title); font-weight: var(--fw-regular); letter-spacing: 1px; color: var(--c-greyish); }
+
+.footer__author span { font-size: 1.25em; font-weight: var(--fw-bold); }
 
 .modal__container { position: absolute; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); }
 
