@@ -10,7 +10,8 @@ const NewGame = (props: {
   const gameTokens: JSX.Element[] = props.gameDetails.tokens.map((tokenSymbol: TokenSymbol) => {
     return (
       <button
-        className={`${tokenSymbol} btn--token`}
+        key={`btn--token--${tokenSymbol}`}
+        className={`btn--token`}
         onClick={(event: React.MouseEvent) => props.onChoice(event, tokenSymbol)}
       >
         <GameToken tokenSymbol={tokenSymbol} />
