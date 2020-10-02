@@ -3,8 +3,7 @@
     /* Basic Options */
     "target": "es5",
     "module": "commonjs",
-    "jsx": "react",
-    "outDir": "./dist",
+    "outDir": "./",
     "rootDir": "./",
     "removeComments": true,
     "noEmitOnError": true,
@@ -12,17 +11,12 @@
     /* Strict Type-Checking Options */
     "strict": true,
 
-    /* Additional Checks */
-    // "noUnusedLocals": true,                /* Report errors on unused locals. */
-    // "noUnusedParameters": true,            /* Report errors on unused parameters. */
-    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
-    // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
-
     /* Module Resolution Options */
     "moduleResolution": "node",
     "esModuleInterop": true,
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "files": ["./server.ts"]
 }

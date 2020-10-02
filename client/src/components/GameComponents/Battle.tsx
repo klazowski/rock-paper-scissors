@@ -1,42 +1,28 @@
 import React from 'react';
 import GameToken from './GameToken';
-import { calculateBattleResult } from '../../engine/battle';
+import BattleResult from './BattleResult';
 
 const Battle = (props: {
   userChoice: TokenSymbol;
   houseChoice: TokenSymbol;
   onPlayAgainClick: (event: React.MouseEvent) => void;
-  updateScore: (modifier: number) => void;
+  battleResult: BattleResult;
 }): JSX.Element => {
-  const battleResult = (): JSX.Element => {
-    switch (calculateBattleResult(props.userChoice, props.houseChoice)) {
-      case 'won':
-        props.updateScore(1);
-        return <p>You won</p>;
-      case 'lost':
-        props.updateScore(-1);
-        return <p>You lost</p>;
-      case 'tie':
-        return <p>It's a tie</p>;
-      default:
-        return <p>Something went wrong</p>;
-    }
-  };
   return (
     <div>
-      <div className="flex--center flex--row">
-        <div>
-          <GameToken tokenSymbol={props.userChoice} />
+      <div className='battle-tokens flex--row flex--center'>
+        <div className='battle-token'>
+          <GameToken tokenSymbol={props.userChoice} isWinner={props.battleResult === 'won'} />
           <p>You picked</p>
         </div>
-        <div>
-          <GameToken tokenSymbol={props.houseChoice} />
+        <div className='battle-token'>
+          <GameToken tokenSymbol={props.houseChoice} isWinner={props.battleResult === 'lost'} />
           <p>The house picked</p>
         </div>
       </div>
-      <div className="flex--center flex--column">
-        {battleResult()}
-        <button className="btn--cta" onClick={props.onPlayAgainClick}>
+      <div className='battle-results flex--column flex--center'>
+        <BattleResult result={props.battleResult} />
+        <button className='btn--cta' onClick={props.onPlayAgainClick}>
           Play again
         </button>
       </div>

@@ -5,14 +5,21 @@
 * {
   /* Primary */
 
-  --c-scissors-gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
-  --c-paper-gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
-  --c-rock-gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
-  --c-lizard-gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
-  --c-spock-gradient: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  --c-scissors-gradient: linear-gradient(hsl(40, 84%, 53%), hsl(39, 89%, 49%));
+  --c-paper-gradient: linear-gradient(hsl(230, 89%, 65%), hsl(230, 89%, 62%));
+  --c-rock-gradient: linear-gradient(hsl(349, 70%, 56%), hsl(349, 71%, 52%));
+  --c-lizard-gradient: linear-gradient(hsl(261, 72%, 63%), hsl(261, 73%, 60%));
+  --c-spock-gradient: linear-gradient(hsl(189, 58%, 57%), hsl(189, 59%, 53%));
+
+  --c-scissors: hsl(29, 77%, 44%);
+  --c-paper: hsl(229, 65%, 46%);
+  --c-rock: hsl(347, 75%, 36%);
+  --c-lizard: hsl(261, 51%, 44%);
+  --c-spock: hsl(194, 59%, 42%);
 
   /* Additional */
   --c-white: hsl(0, 0%, 97%);
+  --c-light-grey: hsl(0, 0%, 80%);
   --c-greyish: hsl(245, 12%, 37%);
 
   /* Neutral */
